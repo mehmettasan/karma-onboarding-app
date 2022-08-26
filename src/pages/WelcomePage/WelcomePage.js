@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const App = () => {
+const WelcomePage = () => {
   return (
     <View>
-      <Text>App</Text>
+      <Text>WelcomePage</Text>
     </View>
   )
 }
 
-export default App
+export default WelcomePage
