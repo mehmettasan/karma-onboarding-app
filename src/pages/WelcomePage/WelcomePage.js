@@ -5,7 +5,12 @@ import styles from "./WelcomePage.style"
 import Button from '../../components/WelcomePageButtons/LoginButton/LoginButton'
 import RegisterButton from '../../components/WelcomePageButtons/RegisterButton/RegisterButton'
 
-const WelcomePage = () => {
+const WelcomePage = ({navigation}) => {
+
+  const goLoginPage=()=>{
+    navigation.navigate("LoginPage");
+  }
+
   return (
     <LinearGradient colors={["#EAE0FF", "#FFFFFF"]} style={styles.container}>
       <View style={styles.image_container}>
@@ -17,7 +22,7 @@ const WelcomePage = () => {
       </ImageBackground>
       </View>
       <View style={styles.btn_container}>
-        <Button />
+        <Button onClick={goLoginPage}/>
         <View style={styles.footer}>
           <RegisterButton />
           <Text style={styles.footer_text}>Devam ederek <Text style={styles.blue_text}>Kullanım Koşullarımızı</Text> ve <Text style={styles.blue_text}>Gizlilik Politikamızı</Text> kabul etmiş sayılırsınız.</Text>
