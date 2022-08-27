@@ -11,7 +11,7 @@ export default StyleSheet.create({
     },
     content_container:{
         flex:1,
-        alignItems:"center"
+        width:"100%",
     },  
     btn:{
         backgroundColor:"white",
