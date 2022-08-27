@@ -11,4 +11,57 @@ export default StyleSheet.create({
         justifyContent:"center",
         alignItems:"center"
     },
+    title:{
+        color:"white",
+        fontSize:26,
+        textAlign:"center"
+    },
+    title_span:{
+        fontSize:34,
+        fontWeight:"bold"
+    },
+    sub_title:{
+        color:"white",
+        fontSize:18,
+        textAlign:"center"
+    },
+    text_container:{
+        width:"100%",
+        height:150,
+        paddingTop:20,
+    },
+    content:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    image_container:{
+        width:175,
+        height:175,
+        borderRadius:10,
+        borderWidth:1,
+        borderColor:"#957DC7",
+        backgroundColor:"#DBD2FF",
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    checkbox:{
+        backgroundColor:"white",
+        width:50,
+        height:50,
+    },
+    policy_container:{
+        width:"100%",
+        height:50,
+        justifyContent:"center",
+        flexDirection:"row",
+        padding:5,
+    },
+    policy_text:{
+        fontSize:13,
+        color:"#737373"
+    },
+    policy_text_span:{
+        color:"#844AFF",
+    }
 })

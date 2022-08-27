@@ -35,7 +35,8 @@ export default StyleSheet.create({
         textAlign:"center",
     },
     text_container:{
-        marginBottom:35,
-        marginTop:20,
+        
+        height:152,
+        paddingTop:20,
     }
 })
