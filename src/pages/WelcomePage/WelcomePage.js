@@ -7,12 +7,8 @@ import RegisterButton from '../../components/WelcomePageButtons/RegisterButton/R
 
 const WelcomePage = ({navigation}) => {
 
-  const goLoginPage=()=>{
-    navigation.navigate("LoginPage");
-  }
-
   return (
-    <LinearGradient colors={["#EAE0FF", "#FFFFFF"]} style={styles.container}>
+    <LinearGradient colors={["#EAE0FF", "#FFFFFF", "#FFFFFF"]} style={styles.container}>
       <View style={styles.image_container}>
       <ImageBackground source={require("../../assets/images/wp_background.png")} resizeMode="cover" style={styles.bg_image} >
         <View style={styles.title_container}>
@@ -22,9 +18,9 @@ const WelcomePage = ({navigation}) => {
       </ImageBackground>
       </View>
       <View style={styles.btn_container}>
-        <Button onClick={goLoginPage}/>
+        <Button navigation={navigation}/>
         <View style={styles.footer}>
-          <RegisterButton />
+          <RegisterButton navigation={navigation} />
           <Text style={styles.footer_text}>Devam ederek <Text style={styles.blue_text}>Kullanım Koşullarımızı</Text> ve <Text style={styles.blue_text}>Gizlilik Politikamızı</Text> kabul etmiş sayılırsınız.</Text>
         </View>
       </View>
