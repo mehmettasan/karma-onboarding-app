@@ -21,6 +21,15 @@ export default StyleSheet.create({
         justifyContent:"center",
         alignItems:"center"
     },
+    btn_disabled:{
+        backgroundColor:"white",
+        width:"100%",
+        height:57,
+        borderRadius:10,
+        justifyContent:"center",
+        alignItems:"center",
+        opacity:0.5,
+    },
     btn_text:{
         color:"black",
         fontSize:18

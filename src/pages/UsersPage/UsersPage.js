@@ -1,4 +1,4 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList,StatusBar } from 'react-native'
 import React from 'react'
 import UserCard from '../../components/UserCard/UserCard'
 import { useAtom } from 'jotai'
@@ -22,6 +22,7 @@ const UsersPage = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="white" barStyle={'dark-content'} />
        <FlatList
        columnWrapperStyle={{justifyContent: 'space-between'}}
        ItemSeparatorComponent={

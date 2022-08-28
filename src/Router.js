@@ -32,7 +32,7 @@ const tabBarOptions = {
 const MainTabStack = () => {
     return (
         <Tab.Navigator screenOptions={tabBarOptions}>
-            <Tab.Screen name='Kullanıcılar' component={UsersPage} options={{
+            <Tab.Screen name='UsersPage' component={UsersPage} options={{
                 tabBarIcon: ({ focused }) => {
                     return (
                         <View style={{ backgroundColor: focused ? "#844AFF" : "#E8E8E8", ...tabBarItemStyle }}>
@@ -41,7 +41,7 @@ const MainTabStack = () => {
                     )
                 },
             }} />
-            <Tab.Screen name='Beğenenler' component={LikesPage} options={{
+            <Tab.Screen name='LikesPage' component={LikesPage} options={{
                 tabBarIcon: ({ focused }) => {
                     return (
                         <View style={{ backgroundColor: focused ? "#844AFF" : "#E8E8E8", ...tabBarItemStyle }}>

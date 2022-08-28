@@ -44,7 +44,8 @@ export default StyleSheet.create({
         borderColor:"#957DC7",
         backgroundColor:"#DBD2FF",
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        overflow:"hidden"
     },
     checkbox:{
         backgroundColor:"white",
@@ -64,5 +65,10 @@ export default StyleSheet.create({
     },
     policy_text_span:{
         color:"#844AFF",
-    }
+    },
+    errorText:{
+        fontSize:18,
+        color:"#FF1400",
+        textAlign:"center",
+    },
 })
