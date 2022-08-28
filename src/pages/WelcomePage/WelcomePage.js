@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground,StatusBar } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styles from "./WelcomePage.style"
@@ -9,6 +9,7 @@ const WelcomePage = ({navigation}) => {
 
   return (
     <LinearGradient colors={["#EAE0FF", "#FFFFFF", "#FFFFFF"]} style={styles.container}>
+      <StatusBar backgroundColor="#EAE0FF" barStyle={"dark-content"} />
       <View style={styles.image_container}>
       <ImageBackground source={require("../../assets/images/wp_background.png")} resizeMode="cover" style={styles.bg_image} >
         <View style={styles.title_container}>

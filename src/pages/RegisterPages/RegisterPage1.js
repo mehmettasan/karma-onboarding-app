@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text,StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../components/TopBar/TopBar'
 import styles from "./RegisterPage.style"
@@ -15,6 +15,7 @@ const RegisterPage1 = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="white" barStyle={'dark-content'} />
       <TopBar navigation={navigation} title="Kayıt Ol" />
       <TrackBar width="0%" />
       <View style={styles.content_container}>

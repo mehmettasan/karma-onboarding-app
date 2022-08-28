@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text,StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import styles from "./LoginPage.style"
 import TopBar from "../../components/TopBar/TopBar"
@@ -7,15 +7,18 @@ import InputText from '../../components/InputText/InputText'
 
 const LoginPage = ({ navigation }) => {
   const [username, setUsername] = useState("")
-  const [password,setPassword]=useState("")
-  const [error,setError]=useState(false)
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(false)
 
-  const handleSubmit=()=>{
-    console.log(username +" "+password)
+  const handleSubmit = () => {
+    navigation.navigate("MainPage")
   }
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        backgroundColor="white"
+        barStyle={'dark-content'} />
       <TopBar title="Giriş Yap" navigation={navigation} />
       <View style={styles.content_container}>
         <LRCard btnName="Giriş Yap" onSubmit={handleSubmit}>
@@ -28,7 +31,7 @@ const LoginPage = ({ navigation }) => {
               <InputText textValue={username} setValue={setUsername} placeholder="Kullanıcı adı" />
               <InputText textValue={password} setValue={setPassword} placeholder="Parola" password={true} />
             </View>
-            {error &&<Text style={styles.errorText}>Hatalı kullanıcı adı ya da parola!</Text>}
+            {error && <Text style={styles.errorText}>Hatalı kullanıcı adı ya da parola!</Text>}
           </View>
         </LRCard>
       </View>

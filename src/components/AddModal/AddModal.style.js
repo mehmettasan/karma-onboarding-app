@@ -1,0 +1,57 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+    container:{
+        width:"100%",
+        height:"100%",
+        backgroundColor:'rgba(0, 0, 0, 0.5)',
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    modal_content:{
+        width:"80%",
+        height:"30%",
+        backgroundColor:"white",
+        borderRadius:20,
+        alignItems:"center",
+        padding:15,
+    },
+    text_container:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    text:{
+        fontSize:20,
+        color:"black",
+        textAlign:"center"
+    },
+    button_container:{
+        width:"100%",
+        height:70,
+        justifyContent:"space-between",
+        alignItems:"center",
+    },
+    send_button:{
+        width:"100%",
+        height:40,
+        backgroundColor:"#844AFF",
+        borderRadius:10,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    send_button_text:{
+        fontSize:18,
+        color:"white"
+    },
+    close_button:{
+        width:"100%",
+        height:25,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    close_button_text:{
+        fontSize:18,
+        color:"#A9A9A9"
+    }
+})
