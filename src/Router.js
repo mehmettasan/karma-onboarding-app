@@ -10,7 +10,9 @@ import RegisterPage3 from './pages/RegisterPages/RegisterPage3';
 import RegisterPage4 from './pages/RegisterPages/RegisterPage4';
 import UsersPage from './pages/UsersPage/UsersPage';
 import LikesPage from './pages/LikesPage/LikesPage';
-import { View, Text, StatusBar } from 'react-native';
+import { View, Text } from 'react-native';
+import { useAtom } from 'jotai';
+import { activeUserAtom } from './store/jotaiStore';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,16 +71,23 @@ const WelcomeStack = () => {
             <Stack.Screen name='WelcomePage' component={WelcomePage} />
             <Stack.Screen name='LoginPage' component={LoginPage} />
             <Stack.Screen name="RegisterPage" component={RegisterStack} />
-            <Stack.Screen name="MainPage" component={MainTabStack} />
         </Stack.Navigator>
     )
 }
 
 const Router = () => {
+    const [isSignedIn] = useAtom(activeUserAtom)
+
     return (
         <NavigationContainer>
-            <WelcomeStack />
+            {isSignedIn==null
+                ?
+                <WelcomeStack />
+                :
+                <MainTabStack />
+            }
         </NavigationContainer>
+
     )
 }
 

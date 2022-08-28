@@ -2,7 +2,7 @@ import { View, Text, ImageBackground, TouchableWithoutFeedback,Modal } from 'rea
 import React, { useState } from 'react'
 import styles from "./UserCard.style"
 import LinearGradient from 'react-native-linear-gradient'
-import AddModal from '../addModal/AddModal'
+import AddModal from '../AddModal/AddModal'
 
 const UserCard = ({ userName, date, imageURL, color }) => {
     const [modalView,setModalView]=useState(false)

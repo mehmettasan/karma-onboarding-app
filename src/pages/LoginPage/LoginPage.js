@@ -4,14 +4,34 @@ import styles from "./LoginPage.style"
 import TopBar from "../../components/TopBar/TopBar"
 import LRCard from "../../components/LRCard/LRCard"
 import InputText from '../../components/InputText/InputText'
+import { usersAtom,activeUserAtom } from '../../store/jotaiStore'
+import { useAtom } from 'jotai'
 
 const LoginPage = ({ navigation }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(false)
+  const [users]=useAtom(usersAtom)
+  const [,setActiveUser]=useAtom(activeUserAtom)
+
+  const userLogin=()=>{
+    let user=null;
+    users.forEach((item)=>{
+        if (item.userName==username) {
+            user=item
+        }
+    })
+    if(user!=null){
+        if (user.password==password) {
+            setActiveUser(user);
+            return;
+        }
+    }
+    setError(true)
+}
 
   const handleSubmit = () => {
-    navigation.navigate("MainPage")
+      userLogin()
   }
 
   return (
