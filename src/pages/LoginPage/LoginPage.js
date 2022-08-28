@@ -31,7 +31,9 @@ const LoginPage = ({ navigation }) => {
 }
 
   const handleSubmit = () => {
+    if (username!=""&&password!="") {
       userLogin()
+    }
   }
 
   return (
