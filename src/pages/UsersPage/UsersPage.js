@@ -16,7 +16,7 @@ const UsersPage = () => {
 
     const renderItem=({item})=>{
         return(
-          <UserCard userName={item.userName} color="#844AFF" imageURL={item.imageURL} date={item.date} />
+          <UserCard userName={item.userName} color="#844AFF" imageURL={item.imageURL} date={item.date} id={item.id} />
           )
     }
 

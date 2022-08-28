@@ -7,22 +7,37 @@ import TrackBar from '../../components/TrackBar/TrackBar'
 import InputText from "../../components/InputText/InputText"
 import CheckBox from '../../components/CheckBox/CheckBox'
 import { useAtom } from 'jotai'
-import { newUserAtom, usersAtom,trackBarStatusAtom } from '../../store/jotaiStore'
+import { newUserAtom,trackBarStatusAtom } from '../../store/jotaiStore'
+import bcrypt from 'react-native-bcrypt';
+import { addUser } from '../../firebase/firebaseCommands'
+
+
 
 const RegisterPage4 = ({ navigation }) => {
     const [password, setPassword] = useState("")
     const [checked, setChecked] = useState(false)
     const [newUser] = useAtom(newUserAtom)
-    const [users, setUsers] = useAtom(usersAtom)
     const [error,setError]=useState(false)
     const [errorText,setErrorText]=useState("")
     const [trackBarStatus]=useAtom(trackBarStatusAtom)
 
-    const handleSubmit = () => {
+    const newUserClear=()=>{
+        newUser.id=0
+        newUser.date=""
+        newUser.password=""
+        newUser.userName=""
+        newUser.imageURL=""
+    }
+
+    const handleSubmit = async() => {
         if (password.length >= 6 && checked) {
             navigation.navigate("LoginPage")
-            newUser.password = password;
-            setUsers([ ...users, newUser ])
+            const hash = bcrypt.hashSync(password, 2);           
+            newUser.id=Math.floor(Math.random()*100000)
+            newUser.password = hash;
+            newUser.likes=[0]
+            addUser(newUser)
+            newUserClear()
         } else {
             if (password=="") {
                 setErrorText("Parola boş bırakılamaz!")

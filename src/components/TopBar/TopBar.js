@@ -2,11 +2,15 @@ import { View, Text, Image, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
 import styles from "./TopBar.style"
 
-const TopBar = ({ title,navigation }) => {
+const TopBar = ({ title, navigation, inLoginPage }) => {
 
     const goBackPage = () => {
-        navigation.goBack();
-      }
+        if (inLoginPage) {
+            navigation.navigate("WelcomePage")
+        } else {
+            navigation.goBack();
+        }
+    }
 
     return (
         <View style={styles.container}>

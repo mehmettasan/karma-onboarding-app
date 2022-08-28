@@ -4,12 +4,12 @@ import styles from "./RegisterPage.style"
 import LRCard from '../../components/LRCard/LRCard'
 import TopBar from '../../components/TopBar/TopBar'
 import TrackBar from '../../components/TrackBar/TrackBar'
-import { launchImageLibrary } from "react-native-image-picker"
 import { useAtom } from 'jotai'
 import { newUserAtom, trackBarStatusAtom } from '../../store/jotaiStore'
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 const RegisterPage3 = ({ navigation }) => {
-    const [response, setResponse] = useState()
     const [newUser] = useAtom(newUserAtom)
     const [disabled, setDisabled] = useState(newUser.imageURL != "" ? false : true);
     const [imageUri, setImageUri] = useState("");
@@ -25,23 +25,22 @@ const RegisterPage3 = ({ navigation }) => {
         }
     }, [])
 
-    useEffect(() => {
-        if (response && response.assets) {
-            if (newUser.imageURL == "") {
-                setTrackBarStatus(trackBarStatus + 25)
+    const handleSelect = async () => {
+        try {
+            const image = await ImagePicker.openPicker({
+                width: 300,
+                height: 300,
+                cropping: true,
+                mediaType: 'photo'
+            })
+            if (newUser.imageURL=="") {
+                setTrackBarStatus(trackBarStatus+25)
             }
-            setImageUri(response.assets[0].uri)
-            newUser.imageURL = response.assets[0].uri
-            setDisabled(false)
-        }
-    }, [response])
-
-    const handleSelect = () => {
-        launchImageLibrary({
-            mediaType: "photo",
-            maxWidth: 300,
-            maxHeight: 300,
-        }, setResponse)
+            newUser.imageURL=image.path
+            setImageUri(image.path)
+            setDisabled(false) 
+            console.log(image.path)
+        } catch (e) {}
     }
 
     return (

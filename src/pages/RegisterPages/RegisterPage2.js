@@ -24,7 +24,6 @@ const RegisterPage2 = ({ navigation }) => {
     const handleSubmit = () => {
         if (newUser.date=="") {
             setTrackBarStatus(trackBarStatus+25)
-            newUser.date=dateString
         }
         if (disabled==false) {
             newUser.date=dateString

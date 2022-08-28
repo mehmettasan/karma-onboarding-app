@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "39402152340",
+    "project_id": "karma-onboarding",
+    "storage_bucket": "karma-onboarding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39402152340:android:4931871e482906001d6f81",
+        "android_client_info": {
+          "package_name": "com.karmaonboardingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39402152340-5q1h91cjlua46kearu1jl7thmf62n04c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZKolLaHzo03hzBFj60X-vynDIEtBjp-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39402152340-5q1h91cjlua46kearu1jl7thmf62n04c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

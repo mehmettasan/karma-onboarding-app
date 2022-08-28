@@ -10,8 +10,10 @@ const LikesPage = () => {
   const [activeUser]=useAtom(activeUserAtom)
 
   const filteredUsers=users.filter((item)=>{
-    if (activeUser.likes.includes(item.id)) {
-      return item;
+    if (activeUser.likes) {
+      if (activeUser.likes.includes(item.id)) {
+        return item;
+      }
     }
   })
 
@@ -23,7 +25,7 @@ const LikesPage = () => {
 
   return (
     <View style={styles.container}>
-      {activeUser.likes.length==0
+      {filteredUsers.length==0
       ?
       <Text>Hiç Beğeni Yok</Text>
       :

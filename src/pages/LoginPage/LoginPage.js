@@ -1,37 +1,34 @@
-import { View, Text,StatusBar } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import styles from "./LoginPage.style"
 import TopBar from "../../components/TopBar/TopBar"
 import LRCard from "../../components/LRCard/LRCard"
 import InputText from '../../components/InputText/InputText'
-import { usersAtom,activeUserAtom } from '../../store/jotaiStore'
+import { activeUserAtom } from '../../store/jotaiStore'
 import { useAtom } from 'jotai'
+import bcrypt from 'react-native-bcrypt';
+import { getUserWithUsername } from '../../firebase/firebaseCommands'
+
 
 const LoginPage = ({ navigation }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(false)
-  const [users]=useAtom(usersAtom)
-  const [,setActiveUser]=useAtom(activeUserAtom)
+  const [, setActiveUser] = useAtom(activeUserAtom)
 
-  const userLogin=()=>{
-    let user=null;
-    users.forEach((item)=>{
-        if (item.userName==username) {
-            user=item
-        }
-    })
-    if(user!=null){
-        if (user.password==password) {
-            setActiveUser(user);
-            return;
-        }
+  const userLogin = async () => {
+    let user = await getUserWithUsername(username);
+    if (user != null) {
+      if (bcrypt.compareSync(password, user.password)) {
+        setActiveUser(user);
+        return;
+      }
     }
     setError(true)
-}
+  }
 
   const handleSubmit = () => {
-    if (username!=""&&password!="") {
+    if (username != "" && password != "") {
       userLogin()
     }
   }
@@ -41,7 +38,7 @@ const LoginPage = ({ navigation }) => {
       <StatusBar
         backgroundColor="white"
         barStyle={'dark-content'} />
-      <TopBar title="Giriş Yap" navigation={navigation} />
+      <TopBar title="Giriş Yap" navigation={navigation} inLoginPage={true} />
       <View style={styles.content_container}>
         <LRCard btnName="Giriş Yap" onSubmit={handleSubmit}>
           <View style={styles.content}>
