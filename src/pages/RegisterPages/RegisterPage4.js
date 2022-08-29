@@ -11,24 +11,28 @@ import { newUserAtom,trackBarStatusAtom } from '../../store/jotaiStore'
 import bcrypt from 'react-native-bcrypt';
 import { addUser } from '../../firebase/firebaseApi'
 
-
-
 const RegisterPage4 = ({ navigation }) => {
     const [password, setPassword] = useState("")
     const [checked, setChecked] = useState(false)
     const [newUser] = useAtom(newUserAtom)
     const [error,setError]=useState(false)
     const [errorText,setErrorText]=useState("")
-    const [trackBarStatus,setTrackBarStatus]=useAtom(trackBarStatusAtom)
+    const [trackBarStatus]=useAtom(trackBarStatusAtom)
+    const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     const handleSubmit = async() => {
         if (password.length >= 6 && checked) {
+            setLoading(true)
+            setDisabled(true)
             const hash = bcrypt.hashSync(password, 2);           
             newUser.id=Math.floor(Math.random()*100000)
             newUser.password = hash;
             newUser.likes=[0]
             await addUser(newUser)
             navigation.navigate("LoginPage")
+            setLoading(false)
+            setDisabled(false)
         } else {
             if (password=="") {
                 setErrorText("Parola boş bırakılamaz!")
@@ -48,7 +52,7 @@ const RegisterPage4 = ({ navigation }) => {
             <TopBar title="Kayıt Ol" navigation={navigation} />
             <TrackBar width={`${trackBarStatus}%`} />
             <View style={styles.content_container}>
-                <LRCard btnName="Tamamla" onSubmit={handleSubmit}>
+                <LRCard btnName="Tamamla" onSubmit={handleSubmit} loading={loading} disabled={disabled}>
                     <View style={styles.text_container}>
                         <Text style={styles.title}>En az 6 karakterden oluşan bir parola girmelisin</Text>
                     </View>

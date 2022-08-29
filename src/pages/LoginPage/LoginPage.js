@@ -13,18 +13,26 @@ import { getUserWithUsername } from '../../firebase/firebaseApi'
 const LoginPage = ({ navigation }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const [error, setError] = useState(false)
   const [, setActiveUser] = useAtom(activeUserAtom)
 
   const userLogin = async () => {
+    setLoading(true)
+    setDisabled(true)
     let user = await getUserWithUsername(username);
     if (user != null) {
       if (bcrypt.compareSync(password, user.password)) {
         setActiveUser(user);
+        setLoading(false)
+        setDisabled(false)
         return;
       }
-    }else{
+    } else {
       setError(true)
+      setLoading(false)
+      setDisabled(false)
     }
   }
 
@@ -41,7 +49,7 @@ const LoginPage = ({ navigation }) => {
         barStyle={'dark-content'} />
       <TopBar title="Giriş Yap" navigation={navigation} inLoginPage={true} />
       <View style={styles.content_container}>
-        <LRCard btnName="Giriş Yap" onSubmit={handleSubmit}>
+        <LRCard btnName="Giriş Yap" onSubmit={handleSubmit} loading={loading} disabled={disabled}>
           <View style={styles.content}>
             <View style={styles.text_container}>
               <Text style={styles.title}><Text style={styles.title_span}>Karma</Text>’ya hoşgeldin!</Text>

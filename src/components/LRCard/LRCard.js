@@ -1,8 +1,8 @@
-import { View, Image, TouchableOpacity, Text } from 'react-native'
+import { View, Image, TouchableOpacity, Text, ActivityIndicator } from 'react-native'
 import React from 'react'
 import styles from "./LRCard.style"
 
-const LRCard = ({ children, btnName, onSubmit, disabled }) => {
+const LRCard = ({ children, btnName, onSubmit, disabled, loading }) => {
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/images/star.png")} style={styles.image} resizeMode="contain" />
@@ -10,7 +10,12 @@ const LRCard = ({ children, btnName, onSubmit, disabled }) => {
         {children}
       </View>
       <TouchableOpacity style={disabled ? styles.btn_disabled : styles.btn} onPress={onSubmit} disabled={disabled}>
-        <Text style={styles.btn_text}>{btnName}</Text>
+        {loading
+          ?
+          <ActivityIndicator size={'large'} color="#844AFF"/>
+          :
+          <Text style={styles.btn_text}>{btnName}</Text>
+        }
       </TouchableOpacity>
     </View>
   )
