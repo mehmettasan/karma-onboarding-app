@@ -19,7 +19,7 @@ const DatePickerInput = ({date,setDate,text,setDisabled,setDateString}) => {
         onConfirm={(date) => {
           setOpen(false)
           setDate(date)
-          setDateString(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)
+          setDateString(`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`)
           setDisabled(false)
         }}
         onCancel={() => {
