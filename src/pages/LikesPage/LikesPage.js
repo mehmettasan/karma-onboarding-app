@@ -1,14 +1,23 @@
 import { View, Text,FlatList } from 'react-native'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styles from "./LikesPage.style"
 import { useAtom } from 'jotai'
-import { activeUserAtom,usersAtom } from '../../store/jotaiStore'
+import { activeUserAtom } from '../../store/jotaiStore'
 import UserCard from '../../components/UserCard/UserCard'
+import { getUsers } from '../../firebase/firebaseApi'
 
 const LikesPage = () => {
-  const [users]=useAtom(usersAtom)
-  const [activeUser]=useAtom(activeUserAtom)
+  const [users,setUsers]=useState([])
 
+  const uploadUsers = async () => {
+     setUsers(await getUsers())
+  }
+  
+  useEffect(()=>{
+    uploadUsers()
+  },[])
+
+  const [activeUser]=useAtom(activeUserAtom)
   const filteredUsers=users.filter((item)=>{
     if (activeUser.likes) {
       if (activeUser.likes.includes(item.id)) {

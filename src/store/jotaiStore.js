@@ -1,9 +1,4 @@
 import { atom } from "jotai";
-import { getUsers } from "../firebase/firebaseCommands";
-
-const users=getUsers();
-
-export const usersAtom=atom(users);
 
 export const activeUserAtom=atom(null);
 export const isSignedInAtom=atom(false);

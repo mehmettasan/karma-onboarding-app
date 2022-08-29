@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "./AddModal.style"
 import { activeUserAtom } from '../../store/jotaiStore'
 import { useAtom } from 'jotai'
-import { addLikes } from '../../firebase/firebaseCommands'
+import { addLikes } from '../../firebase/firebaseApi'
 
 const AddModal = ({userName,setModalView,userID}) => {
     const [activeUser]=useAtom(activeUserAtom)

@@ -7,7 +7,7 @@ import InputText from '../../components/InputText/InputText'
 import { activeUserAtom } from '../../store/jotaiStore'
 import { useAtom } from 'jotai'
 import bcrypt from 'react-native-bcrypt';
-import { getUserWithUsername } from '../../firebase/firebaseCommands'
+import { getUserWithUsername } from '../../firebase/firebaseApi'
 
 
 const LoginPage = ({ navigation }) => {

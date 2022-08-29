@@ -1,10 +1,23 @@
 import database from "@react-native-firebase/database"
+import storage from "@react-native-firebase/storage"
 
 export const addUser = async (user) => {
+    const imagePath=user.imageURL
+    const parts=imagePath.split("/")
+    const fileName=parts[parts.length-1]
+    await uploadFile(imagePath,fileName)
+    const url=await storage().ref(fileName).getDownloadURL();
+    user.imageURL=url;
+
     await database()
         .ref(`/users/${user.id}`)
         .set(user)
         .then(() => console.log('Data set.'));
+}
+
+const uploadFile= async(filePath,fileName)=>{
+    const ref=storage().ref(fileName)
+    await ref.putFile(filePath)
 }
 
 export const addLikes= async(userName,ActiveUser)=>{
@@ -28,7 +41,7 @@ export const getUsers = async () => {
         });
 
     datas.map((item) => {
-        let arr = Object.getOwnPropertyNames(item)
+        let arr =Object.getOwnPropertyNames(item)
         arr.forEach((id) => {
             users.push(item[id])
         })
