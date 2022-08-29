@@ -21,15 +21,6 @@ const RegisterPage4 = ({ navigation }) => {
     const [errorText,setErrorText]=useState("")
     const [trackBarStatus,setTrackBarStatus]=useAtom(trackBarStatusAtom)
 
-    const newUserClear=()=>{
-        newUser.id=0
-        newUser.date=""
-        newUser.password=""
-        newUser.userName=""
-        newUser.imageURL=""
-        setTrackBarStatus(0)
-    }
-
     const handleSubmit = async() => {
         if (password.length >= 6 && checked) {
             const hash = bcrypt.hashSync(password, 2);           
@@ -37,7 +28,6 @@ const RegisterPage4 = ({ navigation }) => {
             newUser.password = hash;
             newUser.likes=[0]
             await addUser(newUser)
-            newUserClear()
             navigation.navigate("LoginPage")
         } else {
             if (password=="") {

@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const tabBarItemStyle = {
-    width: 170, height: 40, borderRadius: 10, justifyContent: "center", alignItems: "center"
+    width: "75%", height: 40, borderRadius: 10, justifyContent: "center", alignItems: "center"
 }
 
 const tabBarOptions = {

@@ -7,15 +7,15 @@ import styles from "./UsersPage.style"
 import { getUsers } from '../../firebase/firebaseApi'
 
 const UsersPage = () => {
-  const [users,setUsers]=useState([])
+  const [users, setUsers] = useState([])
 
   const uploadUsers = async () => {
-     setUsers(await getUsers())
+    setUsers(await getUsers())
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     uploadUsers()
-  },[])
+  }, [])
 
   const [activeUser] = useAtom(activeUserAtom)
   const filteredUsers = users.filter((item) => {
@@ -33,18 +33,20 @@ const UsersPage = () => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="white" barStyle={'dark-content'} />
-      <FlatList
-        columnWrapperStyle={{ justifyContent: 'space-between' }}
-        ItemSeparatorComponent={
-          () => <View style={{ height: 20 }} />}
-        data={filteredUsers}
-        numColumns="2"
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-        ListFooterComponent={
-          () => <View style={{ height: 20 }} />}
-      />
+      <View style={styles.flatlist_container}>
+        <FlatList
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          ItemSeparatorComponent={
+            () => <View style={{ height: 20 }} />}
+          data={filteredUsers}
+          numColumns="2"
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={
+            () => <View style={{ height: 20 }} />}
+        />
+      </View>
     </View>
   )
 }

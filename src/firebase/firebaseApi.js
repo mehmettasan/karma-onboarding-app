@@ -7,6 +7,7 @@ export const addUser = async (user) => {
     const fileName=parts[parts.length-1]
     await uploadFile(imagePath,fileName)
     const url=await storage().ref(fileName).getDownloadURL();
+    console.log("firebase url"+ url)
     user.imageURL=url;
 
     await database()

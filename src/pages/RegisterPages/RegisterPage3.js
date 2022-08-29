@@ -39,7 +39,6 @@ const RegisterPage3 = ({ navigation }) => {
             newUser.imageURL=image.path
             setImageUri(image.path)
             setDisabled(false) 
-            console.log(image.path)
         } catch (e) {}
     }
 
