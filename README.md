@@ -16,6 +16,7 @@ Packages
 - react-native-date-picker
 - react-native-linear-gradient
 - react-native-image-crop-picker
+- bcryptjs
 
 # Project images
 ![image](https://i.ibb.co/wBqwt91/photo-2022-08-29-12-43-32.jpg)
