@@ -23,8 +23,9 @@ const LoginPage = ({ navigation }) => {
         setActiveUser(user);
         return;
       }
+    }else{
+      setError(true)
     }
-    setError(true)
   }
 
   const handleSubmit = () => {

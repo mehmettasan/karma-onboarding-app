@@ -52,6 +52,9 @@ export const getUsers = async () => {
 
 export const getUserWithUsername = async (username) => {
     let id = await getIdWithUserName(username)
+    if (id==null) {
+        return null
+    }
     let user = {}
     await database()
         .ref('/users/' + id)
@@ -70,8 +73,14 @@ export const getIdWithUserName = async (username) => {
         .once('value')
         .then((snapshot) => {
             const data = snapshot.val();
-            arr = Object.getOwnPropertyNames(data)
+            if (data!=null) {     
+                arr = Object.getOwnPropertyNames(data)
+            }
         });
-
-    return arr[0]
+    if (arr!=null) {
+        return arr[0]
+    }else
+    {
+        return null
+    }
 }
