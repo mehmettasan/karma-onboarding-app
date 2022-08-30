@@ -1,4 +1,4 @@
-import { View, FlatList, StatusBar } from 'react-native'
+import { View, FlatList, StatusBar, TouchableOpacity, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import UserCard from '../../components/UserCard/UserCard'
 import { useAtom } from 'jotai'
@@ -17,22 +17,33 @@ const UsersPage = () => {
     uploadUsers()
   }, [])
 
-  const [activeUser] = useAtom(activeUserAtom)
+  const [activeUser, setActiveUser] = useAtom(activeUserAtom)
   const filteredUsers = users.filter((item) => {
     if (item.id != activeUser.id) {
-      return item
+      if (!item.likes.includes(activeUser.id)) {
+        return item
+      }
     }
   })
 
   const renderItem = ({ item }) => {
     return (
-      <UserCard userName={item.userName} color="#844AFF" imageURL={item.imageURL} date={item.date} id={item.id} />
+      <UserCard userName={item.userName} color="#844AFF" imageURL={item.imageURL} date={item.date} id={item.id} setUsers={setUsers} />
     )
+  }
+
+  const handlelogout = () => {
+    setActiveUser(null)
   }
 
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="white" barStyle={'dark-content'} />
+      <View style={styles.header_container}>
+        <TouchableOpacity style={styles.btn_logout} onPress={handlelogout}>
+          <Text style={styles.btn_logout_text}>Çıkış Yap</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.flatlist_container}>
         <FlatList
           columnWrapperStyle={{ justifyContent: "space-between" }}

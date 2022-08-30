@@ -3,12 +3,13 @@ import React from 'react'
 import styles from "./AddModal.style"
 import { activeUserAtom } from '../../store/jotaiStore'
 import { useAtom } from 'jotai'
-import { addLikes } from '../../firebase/firebaseApi'
+import { addLikes, getUsers } from '../../firebase/firebaseApi'
 
-const AddModal = ({userName,setModalView,userID}) => {
+const AddModal = ({userName,setModalView,userID,setUsers}) => {
     const [activeUser]=useAtom(activeUserAtom)
-    const handleSend=()=>{
-        addLikes(userName,activeUser)
+    const handleSend= async()=>{
+        await addLikes(userName,activeUser)
+        setUsers(await getUsers())
         setModalView(false)
     }
 

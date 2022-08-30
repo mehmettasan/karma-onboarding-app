@@ -4,7 +4,7 @@ import styles from "./UserCard.style"
 import LinearGradient from 'react-native-linear-gradient'
 import AddModal from '../AddModal/AddModal'
 
-const UserCard = ({ userName, date, imageURL, color,id }) => {
+const UserCard = ({ userName, date, imageURL, color,id,setUsers }) => {
     const [modalView,setModalView]=useState(false)
 
     return (
@@ -27,7 +27,7 @@ const UserCard = ({ userName, date, imageURL, color,id }) => {
         onRequestClose={()=>setModalView(false)}
         animationType={"slide"}
         >
-            <AddModal userName={userName} setModalView={setModalView} userID={id}/>
+            <AddModal userName={userName} setModalView={setModalView} userID={id} setUsers={setUsers}/>
         </Modal>
         </>
     )

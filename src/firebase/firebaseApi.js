@@ -22,11 +22,15 @@ const uploadFile= async(filePath,fileName)=>{
 
 export const addLikes= async(userName,ActiveUser)=>{
     const user= await getUserWithUsername(userName)
-    user.likes.push(ActiveUser.id)
-    await database()
+    if (!user.likes.includes(ActiveUser.id)){
+        user.likes.push(ActiveUser.id)
+        console.log(user)
+        console.log(ActiveUser.id)
+        await database()
         .ref(`/users/${user.id}`)
         .set(user)
         .then(() => console.log('Data set.'));
+    }
 }
 
 export const getUsers = async () => {
@@ -34,11 +38,10 @@ export const getUsers = async () => {
     let users = []
     await database()
         .ref("/users")
-        .once('value')
-        .then(snapshot => {
+        .once('value',snapshot => {
             let data = snapshot.val()
             datas = [data];
-        });
+        })
 
     datas.map((item) => {
         let arr =Object.getOwnPropertyNames(item)
