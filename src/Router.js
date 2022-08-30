@@ -29,7 +29,7 @@ const tabBarOptions = {
     }
 }
 
-const MainTabStack = () => {
+const MainTabNavigation = () => {
     return (
         <Tab.Navigator screenOptions={tabBarOptions}>
             <Tab.Screen name='UsersPage' component={UsersPage} options={{
@@ -54,23 +54,15 @@ const MainTabStack = () => {
     )
 }
 
-const RegisterStack = () => {
-    return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name='RegisterPage1' component={RegisterPage1} />
-            <Stack.Screen name='RegisterPage2' component={RegisterPage2} />
-            <Stack.Screen name='RegisterPage3' component={RegisterPage3} />
-            <Stack.Screen name='RegisterPage4' component={RegisterPage4} />
-        </Stack.Navigator>
-    )
-}
-
 const WelcomeStack = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false, animation: "none" }}>
             <Stack.Screen name='WelcomePage' component={WelcomePage} />
             <Stack.Screen name='LoginPage' component={LoginPage} />
-            <Stack.Screen name="RegisterPage" component={RegisterStack} />
+            <Stack.Screen name='RegisterPage1' component={RegisterPage1} />
+            <Stack.Screen name='RegisterPage2' component={RegisterPage2} />
+            <Stack.Screen name='RegisterPage3' component={RegisterPage3} />
+            <Stack.Screen name='RegisterPage4' component={RegisterPage4} />
         </Stack.Navigator>
     )
 }
@@ -84,7 +76,7 @@ const Router = () => {
                 ?
                 <WelcomeStack />
                 :
-                <MainTabStack />
+                <MainTabNavigation />
             }
         </NavigationContainer>
 
