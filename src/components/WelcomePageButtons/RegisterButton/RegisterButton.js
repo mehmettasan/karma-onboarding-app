@@ -6,7 +6,7 @@ import styles from "./RegisterButton.style"
 const RegisterButton = ({navigation}) => {
 
     const goRegisterPage=()=>{
-        navigation.navigate("RegisterPage")
+        navigation.navigate("RegisterPage1")
     }
 
     return (
